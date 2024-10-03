@@ -24,7 +24,7 @@ exports.handler = async function(event, context) {
     let privateKey = process.env.PRIVATE_KEY;
 
     // Create a signature
-    const dataToSign = { time: currentTime };
+    const dataToSign = [ currentTime ];
     const signature = signer.signMessage(dataToSign, privateKey);
 
     return {
@@ -33,7 +33,7 @@ exports.handler = async function(event, context) {
         "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            data: dataToSign,
+            data: {time : dataToSign[0]},
             signature: signature.signature,
             publicKey: signature.publicKey,
         })
