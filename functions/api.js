@@ -19,9 +19,9 @@ exports.handler = async function(event, context) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      data: dataToSign,
-      signature: signature,
-      publicKey: publicKey
+        data: dataToSign,
+        signature: signature.signature,
+        publicKey: signature.publicKey,
     })
   };
 };
