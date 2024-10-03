@@ -3,3 +3,4 @@
 .netlify/*
 netlify
 node_modules
+.env
