@@ -10,6 +10,26 @@ Returns :
 - publicKey : the publicKey of the server
 - signature : time data signed using server's provate key to authenticate the oracle and approve the data
 
+Here is a typescript interface for the response :
+
+```typescript
+// Declaration
+export interface OracleResponse {
+  data: {
+    time: number
+  };
+  signature: string;
+  publicKey: string;
+}
+
+// Usage
+const response = await fetch(ORACLE_API);
+const data : OracleResponse = await response.json();
+
+const oracleTimestamp = Field(data.data.time);
+const oracleSignature = Signature.fromBase58(data.signature);
+```
+
 # Test the API
 
 ```npm install```
